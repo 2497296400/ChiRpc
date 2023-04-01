@@ -7,13 +7,8 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Inherited
 public @interface RpcService {
-    /**
-     * Service version, default value is empty string
-     */
+    //定义版本
     String version() default "";
-
-    /**
-     * Service group, default value is empty string
-     */
+    //定义分组
     String group() default "";
 }

@@ -2,34 +2,25 @@ package github.javaguide.remoting.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+@Builder
 @ToString
 public class RpcMessage {
-    /*
-     *  rpc messageByte
-     * */
-    private byte messageByte;
-
-    /**
-     * serialization type
-     */
+    //消息类型
+    private byte messageType;
+    
+    //序列化使用的类型
     private byte codec;
-
-    /**
-     * compress type
-     */
+    
+    //压缩类型
     private byte compress;
     
+    //请求消息的Id
+    private  int requestId;
     
-    private int requsetId;
-
-    /**
-     * requestData
-     */
+    //消息体
     private Object data;
-
 }
+

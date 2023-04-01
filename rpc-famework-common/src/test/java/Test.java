@@ -1,21 +1,17 @@
-import gitHub.chi.factory.SingletonFactory;
-import gitHub.chi.utils.RunTimeUtil;
-import gitHub.chi.utils.concurrent.threadpool.ThreadPoolFactoryUtil;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.ThreadPoolExecutor;
+import github.javaguide.TestPojo.Hellow;
+import github.javaguide.TestPojo.HellowImpl;
+import github.javaguide.extension.ExtensionLoader;
+import github.javaguide.factory.SingletonFactory;
 
 public class Test {
     @org.junit.Test
-    public void getInstance() {
-        System.out.println(RunTimeUtil.cpus());
-    }
-    @org.junit.Test
-    public  void  getThreadPool(){
-        ExecutorService service = ThreadPoolFactoryUtil.creatrCustomThreadPoolIfAbsent("Chi");
-        service.submit(()->{
-            System.out.println("THread");
-        });
-        ThreadPoolFactoryUtil.printThreadPoolStatus((ThreadPoolExecutor) service);
+    public void extension() {
+        Hellow hellow = ExtensionLoader.getExtensionLoader(Hellow.class).getExtension("Hellow");
+        hellow.print();
+        Hellow shllow = ExtensionLoader.getExtensionLoader(Hellow.class).getExtension("Shllow");
+        shllow.print();
+        HellowImpl hellow1 = SingletonFactory.getInstance(HellowImpl.class);
+        hellow1.print();
+        
     }
 }

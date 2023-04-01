@@ -1,10 +1,11 @@
 package github.javaguide.compress;
 
-import gitHub.chi.extension.SPI;
+import github.javaguide.extension.SPI;
 
 @SPI
 public interface Compress {
     byte[] compress(byte[] bytes);
+
+    byte[] decopress(byte[] bytes);
     
-    byte[] decompress(byte[] bytes);
 }

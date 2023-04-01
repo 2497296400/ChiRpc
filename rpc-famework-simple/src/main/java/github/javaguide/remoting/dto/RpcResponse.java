@@ -1,45 +1,44 @@
 package github.javaguide.remoting.dto;
 
-import gitHub.chi.enums.RpcResponseCodeEnum;
+import github.javaguide.enums.RpcResponseCodeEnum;
 import lombok.*;
 
 import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 public class RpcResponse<T> implements Serializable {
     private static final long serialVersionUID = 715745410605631233L;
 
+    //请求ID
     private String requestId;
-
+    //应答消息code
     private Integer code;
-
+    //response 的消息
     private String message;
 
-    /*
-       消息体    
-    * */
+    //response 消息体
     private T data;
 
     public static <T> RpcResponse<T> success(T data, String requestId) {
-        RpcResponse<T> response = new RpcResponse<>();
-        response.setCode(RpcResponseCodeEnum.SUCCESS.getCode());
-        response.setMessage(RpcResponseCodeEnum.SUCCESS.getMessage());
-        response.setRequestId(requestId);
-        if (null != data) {
-            response.setData(data);
+        RpcResponse<T> rpcResponse = new RpcResponse<>();
+        rpcResponse.setCode(RpcResponseCodeEnum.SUCCESS.getCode());
+        rpcResponse.setMessage(RpcResponseCodeEnum.SUCCESS.getMessage());
+        rpcResponse.setRequestId(requestId);
+        if (data != null) {
+            rpcResponse.setData(data);
         }
-        return response;
+        return rpcResponse;
     }
 
     public static <T> RpcResponse<T> fali(RpcResponseCodeEnum rpcResponseCodeEnum) {
-        RpcResponse<T> response = new RpcResponse();
-        response.setCode(rpcResponseCodeEnum.getCode());
-        response.setMessage(rpcResponseCodeEnum.getMessage());
-        return response;
+        RpcResponse<T> rpcResponse = new RpcResponse<>();
+        rpcResponse.setCode(rpcResponseCodeEnum.getCode());
+        rpcResponse.setMessage(rpcResponseCodeEnum.getMessage());
+        return rpcResponse;
     }
 }
