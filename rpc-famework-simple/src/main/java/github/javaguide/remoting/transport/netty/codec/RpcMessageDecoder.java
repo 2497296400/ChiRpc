@@ -114,5 +114,5 @@ public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
                              int lengthAdjustment, int initialBytesToStrip) {
         super(maxFrameLength, lengthFieldOffset, lengthFieldLength, lengthAdjustment, initialBytesToStrip);
     }
-
+    
 }

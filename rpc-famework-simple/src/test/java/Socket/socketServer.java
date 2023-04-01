@@ -19,6 +19,7 @@ public class socketServer {
         rpcServer.registerService(rpcServiceConfig);
         rpcServiceConfig.setService(doget);
         rpcServer.registerService(rpcServiceConfig);
+        System.out.println("tenst");
         rpcServer.start();
     }
 }
